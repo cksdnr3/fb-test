@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FB_API_KEY,
+  apiKey: process.env.NEXT_PUBLIC_FB_API_KEY || process.env.FB_API_KEY,
   authDomain: "pluto-platform.firebaseapp.com",
   projectId: "pluto-platform",
   storageBucket: "pluto-platform.appspot.com",
