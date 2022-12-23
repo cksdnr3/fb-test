@@ -21,8 +21,11 @@ const SignupWithEmailAndPassword: FC<Props> = () => {
   const handleSubmitSignupWithEmailAndPassword = useCallback(
     (e: FormEvent) => {
       e.preventDefault();
+
       createUserWithEmailAndPassword(auth, email, password)
-        .then(console.log)
+        .then((userCredential) => {
+          console.log("signup success:", userCredential);
+        })
         .catch((error) => JSON.stringify(error));
     },
     [email, password]

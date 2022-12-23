@@ -1,4 +1,5 @@
 import { useAtomValue } from "jotai";
+import { useSession } from "next-auth/react";
 import DeleteAccount from "../components/DeleteAccount";
 import { currentUserAtom } from "../components/firebase-app/CurrentUserListener";
 import LinkApps from "../components/LinkApps";
@@ -12,6 +13,11 @@ import VerifyEmail from "../components/VerfiyEmail";
 
 export default function Home() {
   const currentUser = useAtomValue(currentUserAtom);
+  console.log(currentUser);
+
+  const a = useSession();
+
+  console.log(a);
 
   return (
     <div className="flex items-center justify-center mt-32">
