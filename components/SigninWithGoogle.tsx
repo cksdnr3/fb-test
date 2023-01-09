@@ -1,16 +1,12 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAtomValue } from "jotai";
 import { FC, useCallback } from "react";
-import { isFunctionExpression } from "typescript";
 import { auth } from "../firebase/app";
 import { currentUserAtom } from "./firebase-app/CurrentUserListener";
 
 interface Props {}
 
 const googleAuthProvider = new GoogleAuthProvider();
-googleAuthProvider.addScope(
-  "https://www.googleapis.com/auth/cloud-platform.read-only"
-);
 
 const SigninWithGoogle: FC<Props> = () => {
   const currentUser = useAtomValue(currentUserAtom);

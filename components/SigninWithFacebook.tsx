@@ -41,6 +41,8 @@ interface Props {}
 
 const facebookAuthProvider = new FacebookAuthProvider();
 
+facebookAuthProvider.addScope("");
+
 const SigninWithFacebook: FC<Props> = () => {
   const currentUser = useAtomValue(currentUserAtom);
 

@@ -9,7 +9,9 @@ const CurrentUserListener: FC = () => {
   const [currentUser, setCurrentUser] = useAtom(currentUserAtom);
 
   const listenCurrentUser = useCallback(() => {
-    auth.onAuthStateChanged(setCurrentUser);
+    const unsubscribe = auth.onAuthStateChanged(setCurrentUser);
+
+    return () => unsubscribe();
   }, [setCurrentUser]);
 
   useEffect(() => {
