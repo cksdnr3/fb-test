@@ -15,10 +15,6 @@ import VerifyEmail from "../components/VerfiyEmail";
 export default function Home() {
   const currentUser = useAtomValue(currentUserAtom);
 
-  currentUser?.getIdToken().then((token) => {
-    console.log("asdasd: ", jwtDecode(token));
-  });
-
   return (
     <div className="flex items-center justify-center mt-32">
       {!currentUser && (

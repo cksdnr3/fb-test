@@ -11,9 +11,7 @@ export default function App({
   return (
     <>
       <FirebaseApp />
-      <SessionProvider session={session}>
-        <Component {...pageProps} />
-      </SessionProvider>
+      <Component {...pageProps} />
     </>
   );
 }
