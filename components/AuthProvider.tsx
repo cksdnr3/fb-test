@@ -8,11 +8,11 @@ const currentUserAtom = atom<User | null>(null);
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [currentUser, setCurrentUser] = useAtom(currentUserAtom);
-  //   useEffect(() => {
-  //     authApp.onAuthStateChanged((user) => {
-  //       setCurrentUser(user);
-  //     });
-  //   }, [setCurrentUser]);
+  // useEffect(() => {
+  //   authApp.onAuthStateChanged((user) => {
+  //     setCurrentUser(user);
+  //   });
+  // }, [setCurrentUser]);
 
   return <div>{children}</div>;
 };
