@@ -1,4 +1,5 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { FirebaseError } from "firebase/app";
+import { AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
 import { ChangeEvent, FC, FormEvent, useCallback, useState } from "react";
 import { auth } from "../firebase/app";
 
@@ -7,6 +8,7 @@ interface Props {}
 const SignupWithEmailAndPassword: FC<Props> = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState({ message: "", code: "" });
 
   const handleChangeEmail = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
@@ -26,7 +28,9 @@ const SignupWithEmailAndPassword: FC<Props> = () => {
         .then((userCredential) => {
           console.log("signup success:", userCredential);
         })
-        .catch((error) => JSON.stringify(error));
+        .catch((error: FirebaseError) => {
+          setError({ code: error.code, message: error.code });
+        });
     },
     [email, password]
   );
@@ -55,6 +59,9 @@ const SignupWithEmailAndPassword: FC<Props> = () => {
       <button className="border p-2" type="submit">
         Signup
       </button>
+      <div className="text-red-400">
+        Signup failed with {error.message.slice(5)}
+      </div>
     </form>
   );
 };
